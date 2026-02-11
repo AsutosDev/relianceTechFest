@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agriculture Simulator | Login & Sign Up</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container" id="container">
+        <!-- Sign Up Form -->
+        <div class="form-box signup-form">
+            <form id="signupForm">
+                <h1>Create Account</h1>
+                <p>Join the future of farming.</p>
+
+                <div class="scroll-form">
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" placeholder="John Doe" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="emailSignup">Email</label>
+                            <input type="email" id="emailSignup" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="passwordSignup">Password</label>
+                        <input type="password" id="passwordSignup" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="fieldAcres">Field Acres</label>
+                            <input type="number" id="fieldAcres" placeholder="50" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" placeholder="City, Country" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="animalDetails">Animal Details (Types & Count)</label>
+                        <textarea id="animalDetails" rows="3" placeholder="e.g. 20 Cows, 50 Chickens..."></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="farmingType">Primary Crop/Interest</label>
+                        <input type="text" id="farmingType" placeholder="e.g., Wheat, Dairy, Organic">
+                    </div>
+                </div>
+
+                <button type="submit">Sign Up</button>
+                <div class="mobile-toggle">
+                    Already have an account? <span id="toLoginMobile">Login</span>
+                </div>
+            </form>
+        </div>
+
+        <!-- Login Form -->
+        <div class="form-box login-form">
+            <form id="loginForm">
+                <h1>Welcome Back</h1>
+                <p>Access your agriculture dashboard.</p>
+
+                <div class="input-group">
+                    <label for="emailLogin">Email Address</label>
+                    <input type="email" id="emailLogin" placeholder="farmer@reliance.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="passwordLogin">Password</label>
+                    <input type="password" id="passwordLogin" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit">Login</button>
+
+                <div class="mobile-toggle">
+                    Don't have an account? <span id="toSignupMobile">Sign Up</span>
+                </div>
+            </form>
+        </div>
+
+        <!-- Overlay -->
+        <div class="overlay-container">
+            <div class="overlay-panel overlay-right" id="overlayRight">
+                <h1>Agriculture Sim</h1>
+                <p>Optimize your farm with AI-driven insights and real-time monitoring.</p>
+                <button class="ghost" id="signUp">Sign Up Instead</button>
+            </div>
+            <div class="overlay-panel overlay-left" id="overlayLeft">
+                <h1>Ready to harvest?</h1>
+                <p>Log in to manage your livestock and crops with our advanced tools.</p>
+                <button class="ghost" id="signIn">Back to Login</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+
+</html>
