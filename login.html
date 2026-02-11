@@ -14,22 +14,38 @@
         <div class="blob blob-2"></div>
     </div>
 
+    <!-- Theme Toggle -->
+    <div class="theme-switch" id="themeSwitch">
+        <span id="themeIcon">🌙</span>
+    </div>
+
     <div class="container" id="container">
         <!-- Sign Up Form -->
         <div class="form-box signup-form">
             <form id="signupForm">
                 <h1>Create Account</h1>
-                <p>Join the future of farming.</p>
+                <p>Join the future of smart farming.</p>
 
-                <div class="scroll-form">
+                <div>
                     <div class="row">
                         <div class="input-group">
                             <label for="fullName">Full Name</label>
-                            <input type="text" id="fullName" placeholder="John Doe" required>
+                            <input type="text" id="fullName" placeholder="Ram Prasad Ghimire" required>
                         </div>
                         <div class="input-group">
+                            <label for="farmName">Farm Name</label>
+                            <input type="text" id="farmName" placeholder="Ghimire Farm" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-group">
                             <label for="emailSignup">Email</label>
-                            <input type="email" id="emailSignup" placeholder="john@example.com" required>
+                            <input type="email" id="emailSignup" placeholder="ghimire@gmail.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="+977 9800000000">
                         </div>
                     </div>
 
@@ -37,30 +53,9 @@
                         <label for="passwordSignup">Password</label>
                         <input type="password" id="passwordSignup" placeholder="••••••••" required>
                     </div>
-
-                    <div class="row">
-                        <div class="input-group">
-                            <label for="fieldAcres">Field Acres</label>
-                            <input type="number" id="fieldAcres" placeholder="50" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="location">Location</label>
-                            <input type="text" id="location" placeholder="City, Country" required>
-                        </div>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="animalDetails">Animal Details (Types & Count)</label>
-                        <textarea id="animalDetails" rows="3" placeholder="e.g. 20 Cows, 50 Chickens..."></textarea>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="farmingType">Primary Crop/Interest</label>
-                        <input type="text" id="farmingType" placeholder="e.g., Wheat, Dairy, Organic">
-                    </div>
                 </div>
 
-                <button type="submit">Sign Up</button>
+                <button type="submit">Complete Sign Up</button>
                 <div class="mobile-toggle">
                     Already have an account? <span id="toLoginMobile">Login</span>
                 </div>
