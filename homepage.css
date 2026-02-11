@@ -1,0 +1,80 @@
+:root {
+    --primary-green: #2ecc71;
+    --secondary-green: #27ae60;
+    --accent-lime: #a2d149;
+    --bg-gradient: radial-gradient(circle at top right, #1a2f1c, #0f1710, #080c08);
+    --text-main: #f8f9f8;
+    --container-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.welcome-container {
+    padding: 50px;
+    background: var(--container-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    max-width: 600px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s ease-out;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--text-main), var(--accent-lime));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #a0a8a0;
+    line-height: 1.6;
+}
+
+.btn-logout {
+    margin-top: 30px;
+    padding: 15px 30px;
+    background: var(--primary-green);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-logout:hover {
+    background: var(--accent-lime);
+    transform: translateY(-3px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
