@@ -28,12 +28,9 @@ export function renderSocialFeed(container, { language, user }) {
         }
     ];
 
-    // Load cached or use mock
-    let posts = getCachedFeed();
-    if (posts.length === 0) {
-        posts = MOCK_POSTS;
-        cacheFeed(posts);
-    }
+    // Load cached user posts (filter out any old mocks that might have been cached)
+    const cachedPosts = getCachedFeed().filter(p => !['1', '2', '3'].includes(p.id));
+    let posts = [...MOCK_POSTS, ...cachedPosts];
 
     // Local state
     let postLikes = {};
@@ -61,15 +58,22 @@ export function renderSocialFeed(container, { language, user }) {
         ` : ''}
 
         <!-- Weather Widget -->
-        <div class="bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl p-4 mb-6 text-white shadow-lg relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-xl -translate-y-1/2 translate-x-1/2"></div>
+        <div class="bg-gradient-to-br from-blue-600 via-cyan-500 to-teal-400 rounded-3xl p-5 mb-8 text-white shadow-2xl relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-white/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-125 transition-transform duration-700"></div>
+          <div class="absolute bottom-0 left-0 w-24 h-24 bg-blue-400/20 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"></div>
+          
           <div class="relative z-10 flex items-center justify-between">
-            <div>
-              <p class="text-blue-100 text-xs font-medium">${t.weather}</p>
-              <h3 class="text-2xl font-bold mt-1">${user ? user.district : 'Nepal'}</h3>
-              <p class="text-sm opacity-90 mt-1">28°C • ${isNe ? 'आंशिक बादल' : 'Partly Cloudy'}</p>
+            <div class="space-y-1">
+              <div class="flex items-center gap-1.5 px-2 py-0.5 bg-white/20 backdrop-blur-md rounded-full w-fit">
+                <div class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
+                <p class="text-[9px] font-black uppercase tracking-widest">${t.weather}</p>
+              </div>
+              <h3 class="text-3xl font-black mt-2 tracking-tight">${user ? user.district : 'Nepal'}</h3>
+              <p class="text-sm font-bold opacity-90 flex items-center gap-2">
+                <i data-lucide="cloud-sun" class="w-4 h-4"></i> 28°C • ${isNe ? 'आंशिक बादल' : 'Partly Cloudy'}
+              </p>
             </div>
-            <div class="text-5xl">⛅</div>
+            <div class="text-6xl filter drop-shadow-2xl animate-float">⛅</div>
           </div>
         </div>
 
@@ -140,7 +144,10 @@ export function renderSocialFeed(container, { language, user }) {
                 };
                 posts = [newPost, ...posts];
                 postLikes[newPost.id] = { count: 0, liked: false };
-                cacheFeed(posts);
+                
+                // Save only user posts to cache
+                const userPosts = posts.filter(p => !['1', '2', '3'].includes(p.id));
+                cacheFeed(userPosts);
                 selectedImage = null;
                 render();
             });
@@ -174,38 +181,49 @@ export function renderSocialFeed(container, { language, user }) {
 function renderPost(post, t, postLikes, isNe) {
     const likeData = postLikes[post.id] || { count: post.likes, liked: false };
     return `
-    <div class="bg-white dark:bg-earth-900 rounded-2xl shadow-sm border border-earth-100 dark:border-earth-800 overflow-hidden animate-fade-in">
+    <div class="glass-card rounded-3xl shadow-xl overflow-hidden animate-fade-in hover:scale-[1.01] transition-transform duration-300">
       <!-- Author -->
-      <div class="p-4 pb-2 flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-earth-100 dark:bg-earth-800 flex items-center justify-center text-lg">
-          ${post.avatar}
+      <div class="p-5 pb-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-nature-600/10 dark:bg-nature-400/10 flex items-center justify-center text-2xl shadow-inner active:scale-90 transition-transform cursor-pointer border border-nature-500/10">
+            ${post.avatar}
+          </div>
+          <div>
+            <h4 class="font-extrabold text-sm text-earth-950 dark:text-white leading-none">${post.author}</h4>
+            <p class="text-[11px] font-bold text-earth-500 dark:text-earth-400 mt-1 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3 h-3"></i> ${post.location} • ${post.time}
+            </p>
+          </div>
         </div>
-        <div>
-          <h4 class="font-bold text-sm text-earth-900 dark:text-earth-100">${post.author}</h4>
-          <p class="text-[10px] text-earth-500">${post.location} • ${post.time}</p>
-        </div>
+        <button class="p-2 text-earth-400 hover:text-nature-600 transition-colors">
+          <i data-lucide="more-horizontal" class="w-5 h-5"></i>
+        </button>
       </div>
 
       <!-- Content -->
-      <div class="px-4 pb-3">
-        <p class="text-sm text-earth-700 dark:text-earth-300 leading-relaxed">${post.content}</p>
+      <div class="px-5 pb-4">
+        <p class="text-[15px] text-earth-800 dark:text-earth-200 leading-relaxed font-medium">${post.content}</p>
       </div>
 
       ${post.image ? `
-        <img src="${post.image}" alt="Post image" class="w-full h-52 object-cover" />
+        <div class="px-3 pb-3">
+          <img src="${post.image}" alt="Post image" class="w-full h-64 object-cover rounded-2xl shadow-md border border-white/10" />
+        </div>
       ` : ''}
 
       <!-- Actions -->
-      <div class="px-4 py-3 border-t border-earth-100 dark:border-earth-800 flex justify-around">
-        <button data-id="${post.id}" class="feed-like-btn flex items-center gap-1.5 text-xs font-medium ${likeData.liked ? 'text-red-500' : 'text-earth-500'} hover:text-red-500 transition-colors">
-          <i data-lucide="heart" class="w-4 h-4"></i>
-          <span class="like-count">${likeData.count}</span>
-        </button>
-        <button class="flex items-center gap-1.5 text-xs font-medium text-earth-500 hover:text-blue-500 transition-colors">
-          <i data-lucide="message-circle" class="w-4 h-4"></i> ${post.comments}
-        </button>
-        <button class="flex items-center gap-1.5 text-xs font-medium text-earth-500 hover:text-nature-500 transition-colors">
-          <i data-lucide="share-2" class="w-4 h-4"></i> ${post.shares}
+      <div class="px-5 py-4 bg-white/30 dark:bg-black/20 backdrop-blur-sm flex justify-between items-center gap-4">
+        <div class="flex gap-4">
+          <button data-id="${post.id}" class="feed-like-btn flex items-center gap-2 text-xs font-black ${likeData.liked ? 'text-red-500' : 'text-earth-500'} hover:scale-110 transition-all">
+            <i data-lucide="heart" class="w-5 h-5 ${likeData.liked ? 'fill-current' : ''}"></i>
+            <span class="like-count">${likeData.count}</span>
+          </button>
+          <button class="flex items-center gap-2 text-xs font-black text-earth-500 hover:text-blue-500 hover:scale-110 transition-all">
+            <i data-lucide="message-circle" class="w-5 h-5"></i> ${post.comments}
+          </button>
+        </div>
+        <button class="flex items-center gap-2 text-xs font-black text-earth-500 hover:text-nature-500 hover:scale-110 transition-all">
+          <i data-lucide="share-2" class="w-5 h-5"></i> ${post.shares}
         </button>
       </div>
     </div>

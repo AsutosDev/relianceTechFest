@@ -211,7 +211,7 @@ window.onload = () => {
     renderGrids();
 
     // Attach loading overlay to all navigation links (login, get started, start now)
-    document.querySelectorAll('a[href="login.html"]').forEach(link => {
+    document.querySelectorAll('a[href="pages/login.html"]').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             navigateWithOverlay(link.href);

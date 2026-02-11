@@ -29,20 +29,23 @@ export function renderToolsDashboard(container, { language, onViewChange }) {
       </div>
 
       <!-- Tip of the Day -->
-      <div class="bg-gradient-to-r from-nature-500 to-nature-600 rounded-2xl p-4 mb-6 text-white shadow-lg">
-        <p class="text-xs font-bold opacity-80 mb-1">${isNe ? 'आजको सुझाव' : 'Tip of the Day'}</p>
-        <p class="text-sm">${randomTip}</p>
+      <div class="bg-gradient-to-br from-nature-600 to-nature-800 rounded-3xl p-5 mb-8 text-white shadow-xl shadow-nature-600/20 relative overflow-hidden group">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform"></div>
+        <div class="relative z-10">
+          <p class="text-[10px] font-black uppercase tracking-widest opacity-80 mb-2">${isNe ? 'आजको सुझाव' : 'Tip of the Day'}</p>
+          <p class="text-base font-bold leading-tight">${randomTip}</p>
+        </div>
       </div>
 
       <!-- Tool Cards -->
-      <div class="grid grid-cols-2 gap-3">
+      <div class="grid grid-cols-2 gap-4">
         ${tools.map(tool => `
-          <button data-view="${tool.id}" class="tool-card bg-white dark:bg-earth-900 p-4 rounded-2xl shadow-sm border border-earth-100 dark:border-earth-800 hover:shadow-lg hover:-translate-y-1 transition-all text-left">
-            <div class="bg-${tool.color}-100 dark:bg-${tool.color}-900/30 p-3 rounded-xl inline-block mb-3 text-${tool.color}-600 dark:text-${tool.color}-400">
-              <i data-lucide="${tool.icon}" class="w-6 h-6"></i>
+          <button data-view="${tool.id}" class="tool-card glass-card p-5 rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-left group">
+            <div class="w-14 h-14 bg-white/50 dark:bg-earth-800/50 backdrop-blur rounded-2xl flex items-center justify-center mb-4 text-${tool.color}-600 dark:text-${tool.color}-400 shadow-inner group-hover:scale-110 transition-transform">
+              <i data-lucide="${tool.icon}" class="w-7 h-7"></i>
             </div>
-            <h3 class="font-bold text-sm text-earth-900 dark:text-earth-100 mb-1">${tool.label}</h3>
-            <p class="text-[10px] text-earth-500 dark:text-earth-400 leading-tight">${tool.desc}</p>
+            <h3 class="font-extrabold text-sm text-earth-950 dark:text-white mb-1 group-hover:text-nature-600 transition-colors">${tool.label}</h3>
+            <p class="text-[10px] font-bold text-earth-500 dark:text-earth-400 leading-tight opacity-80">${tool.desc}</p>
           </button>
         `).join('')}
       </div>

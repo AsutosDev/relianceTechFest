@@ -45,6 +45,18 @@ function loadState() {
         const savedTheme = localStorage.getItem('urva_theme');
         if (savedTheme) state.theme = savedTheme;
 
+        // Fallback: If no user object but we have a last logged in email, set a skeletal user
+        if (!state.user) {
+            const lastEmail = localStorage.getItem('urva_last_email');
+            if (lastEmail) {
+                state.user = {
+                    name: lastEmail, // Use email as default name
+                    email: lastEmail,
+                    isRegistered: false
+                };
+            }
+        }
+
         // If user exists, skip splash and registration
         if (state.user && state.user.isRegistered) {
             state.showSplash = false;
@@ -129,6 +141,7 @@ function renderApp() {
         renderRegistration(root, {
             language: state.language,
             theme: state.theme,
+            user: state.user, // Pass user object
             onRegister: (user) => {
                 saveUser(user);
                 renderApp();

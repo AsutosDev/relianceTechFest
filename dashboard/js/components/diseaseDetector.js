@@ -49,9 +49,9 @@ export function renderDiseaseDetector(container, { language }) {
         </div>
 
         <!-- Tabs -->
-        <div class="flex bg-earth-100 dark:bg-earth-800 p-1 rounded-2xl mb-6">
+        <div class="flex glass p-1.5 rounded-[1.5rem] mb-8 border border-white/20 shadow-2xl">
           ${['scan', 'library', 'history'].map(tab => `
-            <button data-tab="${tab}" class="disease-tab flex-1 py-2 text-sm font-bold rounded-xl transition-all ${activeTab === tab ? 'bg-white dark:bg-earth-700 text-nature-700 dark:text-nature-300 shadow-sm' : 'text-earth-500 dark:text-earth-400'
+            <button data-tab="${tab}" class="disease-tab flex-1 py-3 text-[11px] font-black uppercase tracking-tighter rounded-2xl transition-all ${activeTab === tab ? 'bg-nature-600 text-white shadow-lg' : 'text-earth-500 hover:text-earth-900 dark:hover:text-white'
             }">${t.tabs[tab]}</button>
           `).join('')}
         </div>
@@ -70,21 +70,24 @@ export function renderDiseaseDetector(container, { language }) {
         return `
       <div class="space-y-6 animate-slide-up">
         <!-- Upload Area -->
-        <div class="bg-white dark:bg-earth-900 rounded-3xl p-6 shadow-sm border border-earth-100 dark:border-earth-800 text-center">
+        <div class="glass-card rounded-[2.5rem] p-8 shadow-2xl border border-white/20 text-center group">
           ${previewUrl ? `
-            <img src="${previewUrl}" class="w-full h-48 object-cover rounded-2xl mb-4" />
+            <div class="relative overflow-hidden rounded-[2rem] mb-6 shadow-inner border border-white/10">
+              <img src="${previewUrl}" class="w-full h-56 object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            </div>
           ` : `
-            <div class="border-2 border-dashed border-earth-200 dark:border-earth-700 rounded-2xl p-8 mb-4">
-              <i data-lucide="image-plus" class="w-12 h-12 text-earth-300 dark:text-earth-600 mx-auto mb-3"></i>
-              <p class="text-sm text-earth-500">${t.upload}</p>
+            <div class="border-2 border-dashed border-earth-100 dark:border-earth-700 rounded-[2rem] p-12 mb-6 group-hover:border-nature-500/50 transition-colors">
+              <i data-lucide="image-plus" class="w-16 h-16 text-earth-200 dark:text-earth-700 mx-auto mb-4 group-hover:scale-110 transition-transform"></i>
+              <p class="text-xs font-black uppercase tracking-widest text-earth-400 group-hover:text-nature-600">${t.upload}</p>
             </div>
           `}
-          <div class="flex gap-3">
-            <label class="flex-1 cursor-pointer bg-earth-100 dark:bg-earth-800 hover:bg-earth-200 dark:hover:bg-earth-700 text-earth-700 dark:text-earth-300 py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-colors">
+          <div class="flex gap-4">
+            <label class="flex-1 cursor-pointer glass hover:bg-nature-500 hover:text-white dark:hover:bg-nature-600 text-earth-700 dark:text-earth-300 py-4 rounded-2xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg border-white/10">
               <i data-lucide="upload" class="w-4 h-4"></i> ${t.upload}
               <input type="file" accept="image/*" id="disease-file-input" class="hidden" />
             </label>
-            <label class="flex-1 cursor-pointer bg-earth-100 dark:bg-earth-800 hover:bg-earth-200 dark:hover:bg-earth-700 text-earth-700 dark:text-earth-300 py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-colors">
+            <label class="flex-1 cursor-pointer glass hover:bg-nature-500 hover:text-white dark:hover:bg-nature-600 text-earth-700 dark:text-earth-300 py-4 rounded-2xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg border-white/10">
               <i data-lucide="camera" class="w-4 h-4"></i> ${t.camera}
               <input type="file" accept="image/*" capture="environment" id="disease-camera-input" class="hidden" />
             </label>

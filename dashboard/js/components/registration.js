@@ -1,7 +1,7 @@
 import { icon, refreshIcons } from '../icons.js';
 import { detectLocation } from '../services/locationService.js';
 
-export function renderRegistration(container, { language, theme, onRegister, onLanguageChange, onThemeChange }) {
+export function renderRegistration(container, { language, theme, user, onRegister, onLanguageChange, onThemeChange }) {
     const isNe = language === 'ne';
 
     const districts = [
@@ -46,7 +46,7 @@ export function renderRegistration(container, { language, theme, onRegister, onL
 
         <!-- Logo -->
         <div class="text-center mb-8 flex flex-col items-center">
-          <img src="assets/logo.png" alt="Logo" class="h-16 w-auto mb-3">
+          <img src="../assets/logo.png" alt="Logo" class="h-16 w-auto mb-3">
           <h1 class="text-2xl font-bold text-earth-900 dark:text-earth-100">${t.title}</h1>
           <p class="text-earth-500 dark:text-earth-400 text-sm mt-1">${t.subtitle}</p>
         </div>
@@ -56,7 +56,7 @@ export function renderRegistration(container, { language, theme, onRegister, onL
           <!-- Name -->
           <div class="space-y-1">
             <label class="text-xs font-bold text-earth-500 uppercase tracking-wider">${t.name}</label>
-            <input type="text" id="reg-name" required placeholder="${isNe ? 'जस्तै: राम बहादुर' : 'e.g. Ram Bahadur'}" 
+            <input type="text" id="reg-name" required value="${user?.name || ''}" placeholder="${isNe ? 'जस्तै: राम बहादुर' : 'e.g. Ram Bahadur'}" 
               class="w-full bg-earth-50 dark:bg-earth-800 rounded-xl px-4 py-3 border border-earth-200 dark:border-earth-700 outline-none focus:ring-2 focus:ring-nature-500 text-sm" />
           </div>
 

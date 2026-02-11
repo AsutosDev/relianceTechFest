@@ -23,7 +23,7 @@ export function renderMicroFinance(container, { language, user }) {
     ];
 
     const loanProducts = [
-        { name: isNe ? 'कृषि ऋण' : 'Agriculture Loan', rate: '5-8%', maxAmount: 'NPR 10 Lakh', duration: '1-5 years', icon: '<img src="assets/logo.png" class="w-8 h-8">' },
+        { name: isNe ? 'कृषि ऋण' : 'Agriculture Loan', rate: '5-8%', maxAmount: 'NPR 10 Lakh', duration: '1-5 years', icon: '<img src="../assets/logo.png" class="w-8 h-8">' },
         { name: isNe ? 'पशुपालन ऋण' : 'Livestock Loan', rate: '6-9%', maxAmount: 'NPR 5 Lakh', duration: '1-3 years', icon: '🐄' },
         { name: isNe ? 'सिँचाइ ऋण' : 'Irrigation Loan', rate: '4-7%', maxAmount: 'NPR 3 Lakh', duration: '1-3 years', icon: '💧' },
         { name: isNe ? 'यन्त्र ऋण' : 'Equipment Loan', rate: '7-10%', maxAmount: 'NPR 15 Lakh', duration: '2-7 years', icon: '🚜' }
@@ -61,9 +61,9 @@ export function renderMicroFinance(container, { language, user }) {
         </div>
 
         <!-- Tabs -->
-        <div class="flex bg-earth-100 dark:bg-earth-800 p-1 rounded-2xl mb-6">
+        <div class="flex glass p-1.5 rounded-[1.5rem] mb-8 border border-white/20 shadow-2xl">
           ${Object.entries(t.tabs).map(([key, label]) => `
-            <button data-tab="${key}" class="micro-tab flex-1 py-2 text-xs font-bold rounded-xl transition-all ${activeTab === key ? 'bg-white dark:bg-earth-700 text-nature-700 dark:text-nature-300 shadow-sm' : 'text-earth-500'
+            <button data-tab="${key}" class="micro-tab flex-1 py-3 text-[11px] font-black uppercase tracking-tighter rounded-2xl transition-all ${activeTab === key ? 'bg-nature-600 text-white shadow-lg' : 'text-earth-500 hover:text-earth-900 dark:hover:text-white'
             }">${label}</button>
           `).join('')}
         </div>
@@ -83,19 +83,19 @@ export function renderMicroFinance(container, { language, user }) {
 
     function renderCoopsTab() {
         return `
-      <div class="space-y-3 animate-slide-up">
+      <div class="space-y-4 animate-slide-up pb-4">
         ${cooperatives.map(c => `
-          <div class="bg-white dark:bg-earth-900 p-4 rounded-2xl shadow-sm border border-earth-100 dark:border-earth-800">
-            <div class="flex items-start gap-3">
-              <span class="text-2xl">${c.icon}</span>
-              <div class="flex-1">
-                <h4 class="font-bold text-sm text-earth-900 dark:text-earth-100">${c.name}</h4>
-                <p class="text-xs text-earth-500 mt-0.5">${c.location} • ${c.members} ${isNe ? 'सदस्य' : 'members'}</p>
-              </div>
-              <div class="text-right">
-                <p class="text-sm font-bold text-nature-600">${c.rate}</p>
-                <p class="text-[10px] text-earth-400">${isNe ? 'व्याज दर' : 'Interest'}</p>
-              </div>
+          <div class="glass-card p-5 rounded-3xl shadow-lg border border-white/20 flex items-center gap-4 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
+            <div class="w-14 h-14 bg-white/50 dark:bg-earth-800/50 backdrop-blur rounded-2xl flex items-center justify-center text-3xl shadow-inner group-hover:scale-110 transition-transform">
+              ${c.icon}
+            </div>
+            <div class="flex-1">
+              <h4 class="font-extrabold text-[15px] text-earth-950 dark:text-white leading-tight">${c.name}</h4>
+              <p class="text-[10px] font-bold text-earth-500 uppercase tracking-widest mt-1">${c.location} • ${c.members} ${isNe ? 'सदस्य' : 'members'}</p>
+            </div>
+            <div class="text-right">
+              <p class="text-[10px] font-black text-nature-600 uppercase tracking-widest leading-none mb-1">${isNe ? 'व्याज' : 'Interest'}</p>
+              <p class="text-lg font-black text-nature-600 leading-none">${c.rate}</p>
             </div>
           </div>
         `).join('')}

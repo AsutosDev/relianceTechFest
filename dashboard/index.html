@@ -7,7 +7,7 @@
   <title>उर्व संसार | Urva Sansar - Smart Farming Nepal</title>
   <meta name="description"
     content="Urva Sansar – Smart Farming Ecosystem for Nepal. AI-powered crop advice, disease detection, market prices, and more." />
-  <link rel="icon" href="assets/logo.png" />
+  <link rel="icon" href="../assets/logo.png" />
 
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -77,6 +77,7 @@
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 1;
+      line-clamp: 1;
     }
 
     .line-clamp-2 {
@@ -84,6 +85,7 @@
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
+      line-clamp: 2;
     }
 
     .line-clamp-3 {
@@ -91,6 +93,7 @@
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
+      line-clamp: 3;
     }
 
     body {
@@ -98,43 +101,101 @@
       overscroll-behavior: none;
     }
 
-    /* Splash screen styles */
-    @keyframes splashPulse {
+    /* Glassmorphism */
+    .glass {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
 
-      0%,
+    .dark .glass {
+      background: rgba(30, 20, 15, 0.9);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    }
+
+    .dark .glass-card {
+      background: rgba(40, 30, 25, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Mesh Background */
+    .mesh-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      background: #faf6f1;
+    }
+
+    .dark .mesh-bg {
+      background: #0f0a08;
+    }
+
+    .mesh-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      animation: meshFloat 20s infinite alternate ease-in-out;
+    }
+
+    @keyframes meshFloat {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
       100% {
-        transform: scale(1);
-        opacity: 0.7;
+        transform: translate(10%, 10%) scale(1.2);
       }
+    }
 
-      50% {
-        transform: scale(1.2);
-        opacity: 1;
-      }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      overscroll-behavior: none;
+      min-height: 100vh;
     }
   </style>
 </head>
 
 <body
   class="bg-earth-50 dark:bg-earth-950 text-earth-900 dark:text-earth-100 min-h-screen transition-colors duration-300">
+  <!-- Mesh Background -->
+  <div class="mesh-bg">
+    <div class="mesh-circle w-[500px] h-[500px] bg-nature-200/30 dark:bg-nature-900/20 top-[-10%] right-[-10%]"></div>
+    <div class="mesh-circle w-[400px] h-[400px] bg-earth-200/40 dark:bg-earth-900/10 bottom-[-10%] left-[-10%]"
+      style="animation-delay: -5s;"></div>
+    <div class="mesh-circle w-[300px] h-[300px] bg-nature-100/20 dark:bg-nature-800/10 top-[20%] left-[10%]"
+      style="animation-delay: -10s;"></div>
+  </div>
+
   <div id="root"></div>
 
   <!-- Set your Gemini API Key here -->
   <script>
     window.API_KEY = '';
   </script>
-
   <script type="module" src="js/app.js"></script>
+  <script> // Service Worker Registration
 
-  <script>
-    // Service Worker Registration
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
-          .then(reg => console.log('SW registered:', reg.scope))
-          .catch(err => console.log('SW registration failed:', err));
+        navigator.serviceWorker.register('./service-worker.js').then(reg => console.log('SW registered:', reg.scope)).catch(err => console.log('SW registration failed:', err));
       });
     }
+
   </script>
 </body>
 

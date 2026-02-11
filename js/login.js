@@ -241,6 +241,10 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
     try {
         await signInWithEmailAndPassword(auth, email, password);
+        
+        // Save email to localStorage for the dist app to use as a default username
+        localStorage.setItem('urva_last_email', email);
+        
         showLoading("loadingSuccess");
         setTimeout(() => {
             window.location.href = "homepage.html";
@@ -287,11 +291,13 @@ document.getElementById('signupForm').addEventListener('submit', async (e) => {
         // Save to localStorage so the dist homepage app recognizes the user
         localStorage.setItem('urva_user', JSON.stringify({
             name: name,
+            email: email, // Include email
             district: district,
             farmingType: farmingType,
             isRegistered: true,
             location: detectedLocation || undefined
         }));
+        localStorage.setItem('urva_last_email', email);
 
         showLoading("loadingWelcome");
         setTimeout(() => {

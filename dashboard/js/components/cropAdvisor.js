@@ -59,25 +59,30 @@ export function renderCropAdvisor(container, { language, user }) {
 
     function renderForm() {
         return `
-      <form id="crop-form" class="bg-white dark:bg-earth-900 rounded-3xl p-6 shadow-xl border border-earth-100 dark:border-earth-800 space-y-4 animate-slide-up">
+      <form id="crop-form" class="glass-card rounded-[2rem] p-8 shadow-2xl border border-white/20 space-y-6 animate-slide-up">
         <div class="space-y-1">
-          <label class="text-xs font-bold text-earth-500 uppercase">${t.location}</label>
-          <input type="text" id="crop-location" value="${user ? user.district : ''}" required
-            class="w-full bg-earth-50 dark:bg-earth-800 rounded-xl px-4 py-3 border border-earth-200 dark:border-earth-700 outline-none focus:ring-2 focus:ring-nature-500 text-sm" />
+          <label class="text-[10px] font-black text-nature-600 dark:text-nature-400 uppercase tracking-widest px-1">${t.location}</label>
+          <div class="relative group">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <i data-lucide="map-pin" class="w-4 h-4 text-earth-400 group-focus-within:text-nature-500 transition-colors"></i>
+            </div>
+            <input type="text" id="crop-location" value="${user ? user.district : ''}" required
+              class="w-full bg-white/50 dark:bg-earth-800/50 backdrop-blur rounded-2xl pl-10 pr-4 py-4 border border-earth-100 dark:border-earth-700 outline-none focus:ring-2 focus:ring-nature-500 font-bold text-sm transition-all" />
+          </div>
         </div>
 
         <div class="grid grid-cols-2 gap-4">
           <div class="space-y-1">
-            <label class="text-xs font-bold text-earth-500 uppercase">${t.altitude}</label>
-            <select id="crop-altitude" class="w-full bg-earth-50 dark:bg-earth-800 rounded-xl px-3 py-3 border border-earth-200 dark:border-earth-700 outline-none text-sm">
+            <label class="text-[10px] font-black text-nature-600 dark:text-nature-400 uppercase tracking-widest px-1">${t.altitude}</label>
+            <select id="crop-altitude" class="w-full bg-white/50 dark:bg-earth-800/50 backdrop-blur rounded-2xl px-4 py-4 border border-earth-100 dark:border-earth-700 outline-none font-bold text-sm transition-all">
               <option>Terai (<600m)</option>
               <option selected>Hills (600-2000m)</option>
               <option>Mountain (>2000m)</option>
             </select>
           </div>
           <div class="space-y-1">
-            <label class="text-xs font-bold text-earth-500 uppercase">${t.soil}</label>
-            <select id="crop-soil" class="w-full bg-earth-50 dark:bg-earth-800 rounded-xl px-3 py-3 border border-earth-200 dark:border-earth-700 outline-none text-sm">
+            <label class="text-[10px] font-black text-nature-600 dark:text-nature-400 uppercase tracking-widest px-1">${t.soil}</label>
+            <select id="crop-soil" class="w-full bg-white/50 dark:bg-earth-800/50 backdrop-blur rounded-2xl px-4 py-4 border border-earth-100 dark:border-earth-700 outline-none font-bold text-sm transition-all">
               ${soilTypes.map(s => `<option value="${s}">${s}</option>`).join('')}
             </select>
           </div>
@@ -85,29 +90,29 @@ export function renderCropAdvisor(container, { language, user }) {
 
         <div class="grid grid-cols-2 gap-4">
           <div class="space-y-1">
-            <label class="text-xs font-bold text-earth-500 uppercase">${t.season}</label>
-            <select id="crop-season" class="w-full bg-earth-50 dark:bg-earth-800 rounded-xl px-3 py-3 border border-earth-200 dark:border-earth-700 outline-none text-sm">
+            <label class="text-[10px] font-black text-nature-600 dark:text-nature-400 uppercase tracking-widest px-1">${t.season}</label>
+            <select id="crop-season" class="w-full bg-white/50 dark:bg-earth-800/50 backdrop-blur rounded-2xl px-4 py-4 border border-earth-100 dark:border-earth-700 outline-none font-bold text-sm transition-all">
               ${seasons.map(s => `<option value="${s}">${s}</option>`).join('')}
             </select>
           </div>
           <div class="space-y-1">
-            <label class="text-xs font-bold text-earth-500 uppercase">${t.irrigation}</label>
-            <select id="crop-irrigation" class="w-full bg-earth-50 dark:bg-earth-800 rounded-xl px-3 py-3 border border-earth-200 dark:border-earth-700 outline-none text-sm">
+            <label class="text-[10px] font-black text-nature-600 dark:text-nature-400 uppercase tracking-widest px-1">${t.irrigation}</label>
+            <select id="crop-irrigation" class="w-full bg-white/50 dark:bg-earth-800/50 backdrop-blur rounded-2xl px-4 py-4 border border-earth-100 dark:border-earth-700 outline-none font-bold text-sm transition-all">
               ${irrigationOptions.map(o => `<option value="${o}">${o}</option>`).join('')}
             </select>
           </div>
         </div>
 
         <div class="space-y-1">
-          <label class="text-xs font-bold text-earth-500 uppercase">${t.landArea}</label>
+          <label class="text-[10px] font-black text-nature-600 dark:text-nature-400 uppercase tracking-widest px-1">${t.landArea}</label>
           <input type="text" id="crop-land" placeholder="${isNe ? 'जस्तै: ५ रोपनी' : 'e.g. 5 Ropani'}" required
-            class="w-full bg-earth-50 dark:bg-earth-800 rounded-xl px-4 py-3 border border-earth-200 dark:border-earth-700 outline-none focus:ring-2 focus:ring-nature-500 text-sm" />
+            class="w-full bg-white/50 dark:bg-earth-800/50 backdrop-blur rounded-2xl px-4 py-4 border border-earth-100 dark:border-earth-700 outline-none focus:ring-2 focus:ring-nature-500 font-bold text-sm transition-all" />
         </div>
 
-        <button type="submit" class="w-full bg-nature-600 hover:bg-nature-700 text-white py-3.5 rounded-xl font-bold shadow-lg shadow-nature-600/30 transition-all flex items-center justify-center gap-2 ${isLoading ? 'opacity-50' : ''}">
+        <button type="submit" class="w-full bg-nature-600 hover:bg-nature-700 text-white py-4 rounded-2xl font-black text-lg shadow-xl shadow-nature-600/30 transition-all flex items-center justify-center gap-3 active:scale-95 ${isLoading ? 'opacity-50' : ''}">
           ${isLoading
-                ? `<div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div> ${t.loading}`
-                : `<i data-lucide="sparkles" class="w-5 h-5"></i> ${t.submit}`}
+                ? `<div class="w-6 h-6 border-3 border-white border-t-transparent rounded-full animate-spin"></div> ${t.loading}`
+                : `<i data-lucide="sparkles" class="w-6 h-6"></i> ${t.submit}`}
         </button>
       </form>
     `;

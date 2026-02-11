@@ -1,7 +1,7 @@
 const CACHE_NAME = 'urva-sansar-v2';
 const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
+  '../index.html',
+  './index.html',
   'https://cdn.tailwindcss.com',
   'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js',
   'https://cdn.jsdelivr.net/npm/marked/marked.min.js'

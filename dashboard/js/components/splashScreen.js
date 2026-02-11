@@ -6,7 +6,7 @@ export function renderSplashScreen(container, onComplete) {
       <div class="relative mb-8">
         <div class="absolute inset-0 w-24 h-24 bg-white/20 rounded-full blur-xl" style="animation: splashPulse 2s infinite;"></div>
         <div class="relative w-24 h-24 flex items-center justify-center animate-bounce-slow">
-          <img src="assets/logo.png" alt="Logo" class="w-16 h-auto drop-shadow-lg">
+          <img src="../assets/logo.png" alt="Logo" class="w-16 h-auto drop-shadow-lg">
         </div>
       </div>
       <h1 class="text-3xl font-bold tracking-wide mb-2">उर्व संसार</h1>

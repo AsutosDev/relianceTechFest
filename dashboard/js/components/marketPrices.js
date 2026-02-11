@@ -65,9 +65,9 @@ export function renderMarketPrices(container, { language, user }) {
         </div>
 
         <!-- Tabs -->
-        <div class="flex bg-earth-100 dark:bg-earth-800 p-1 rounded-2xl mb-6">
+        <div class="flex glass p-1.5 rounded-[1.5rem] mb-8 border border-white/20 shadow-2xl">
           ${Object.entries(t.tabs).map(([key, label]) => `
-            <button data-tab="${key}" class="market-tab flex-1 py-2 text-xs font-bold rounded-xl transition-all ${activeTab === key ? 'bg-white dark:bg-earth-700 text-nature-700 dark:text-nature-300 shadow-sm' : 'text-earth-500'
+            <button data-tab="${key}" class="market-tab flex-1 py-3 text-[11px] font-black uppercase tracking-tighter rounded-2xl transition-all ${activeTab === key ? 'bg-nature-600 text-white shadow-lg' : 'text-earth-500 hover:text-earth-900 dark:hover:text-white'
             }">${label}</button>
           `).join('')}
         </div>
@@ -86,34 +86,39 @@ export function renderMarketPrices(container, { language, user }) {
         const filtered = getFiltered();
         return `
       <!-- Search -->
-      <div class="relative mb-4">
-        <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-earth-400"></i>
+      <div class="relative mb-6 group">
+        <i data-lucide="search" class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-earth-400 group-focus-within:text-nature-500 transition-colors"></i>
         <input type="text" id="market-search" value="${searchQuery}" placeholder="${t.search}"
-          class="w-full bg-white dark:bg-earth-900 pl-10 pr-4 py-3 rounded-xl border border-earth-200 dark:border-earth-700 text-sm outline-none focus:ring-2 focus:ring-nature-500" />
+          class="w-full glass pl-12 pr-4 py-4 rounded-2xl border border-white/20 text-sm font-bold outline-none focus:ring-2 focus:ring-nature-500 transition-all shadow-xl" />
       </div>
 
       <!-- Categories -->
-      <div class="flex gap-2 mb-4 overflow-x-auto no-scrollbar pb-1">
+      <div class="flex gap-2 mb-6 overflow-x-auto no-scrollbar pb-1 px-1">
         ${commodityCategories.map(c => `
-          <button data-cat="${c.id}" class="market-cat-btn whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${activeCategory === c.id ? 'bg-nature-600 text-white' : 'bg-earth-100 dark:bg-earth-800 text-earth-600 dark:text-earth-400'
+          <button data-cat="${c.id}" class="market-cat-btn whitespace-nowrap px-4 py-2 rounded-xl text-xs font-black uppercase tracking-tighter transition-all ${activeCategory === c.id ? 'bg-nature-600 text-white shadow-lg' : 'glass text-earth-600 dark:text-earth-400 border-white/10'
             }">${c.label}</button>
         `).join('')}
       </div>
 
       <!-- Price List -->
-      <div class="space-y-2 animate-fade-in">
+      <div class="space-y-3 animate-fade-in pb-4">
         ${filtered.map(c => `
-          <button data-id="${c.id}" class="market-item w-full text-left bg-white dark:bg-earth-900 p-3 rounded-xl shadow-sm border border-earth-100 dark:border-earth-800 flex items-center gap-3 hover:shadow-md transition-all">
-            <span class="text-2xl">${c.icon}</span>
+          <button data-id="${c.id}" class="market-item w-full text-left glass-card p-4 rounded-3xl shadow-lg border border-white/20 flex items-center gap-4 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group">
+            <div class="w-14 h-14 bg-white/50 dark:bg-earth-800/50 backdrop-blur rounded-2xl flex items-center justify-center text-3xl shadow-inner group-hover:scale-110 transition-transform">
+              ${c.icon}
+            </div>
             <div class="flex-1">
-              <h4 class="font-bold text-sm text-earth-900 dark:text-earth-100">${c.name}</h4>
-              <p class="text-xs text-earth-500">${t.perKg}</p>
+              <h4 class="font-extrabold text-[15px] text-earth-950 dark:text-white leading-tight">${c.name}</h4>
+              <p class="text-[10px] font-bold text-earth-500 uppercase tracking-widest mt-0.5">${t.perKg}</p>
             </div>
             <div class="text-right">
-              <p class="font-bold text-earth-900 dark:text-earth-100">NPR ${c.price}</p>
-              <p class="text-xs font-bold ${c.change > 0 ? 'text-green-500' : c.change < 0 ? 'text-red-500' : 'text-earth-400'}">
-                ${c.change > 0 ? '↑' : c.change < 0 ? '↓' : '→'} ${Math.abs(c.change)}%
-              </p>
+              <p class="font-black text-base text-earth-950 dark:text-white leading-tight">NPR <span class="bg-nature-600/10 dark:bg-nature-400/10 px-2 py-0.5 rounded-lg text-nature-600 dark:text-nature-400">${c.price}</span></p>
+              <div class="flex items-center justify-end gap-1 mt-1">
+                <p class="text-[11px] font-black ${c.change > 0 ? 'text-green-500' : c.change < 0 ? 'text-red-500' : 'text-earth-400'}">
+                  ${c.change > 0 ? '↑' : c.change < 0 ? '↓' : '→'} ${Math.abs(c.change)}%
+                </p>
+                <i data-lucide="trending-up" class="w-3 h-3 ${c.change >= 0 ? 'text-green-500' : 'text-red-500 opacity-0'}"></i>
+              </div>
             </div>
           </button>
         `).join('')}

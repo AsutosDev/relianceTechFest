@@ -32,46 +32,49 @@ export function renderKrishiChat(container, { language }) {
         </div>
 
         <!-- Messages -->
-        <div class="flex-1 overflow-y-auto no-scrollbar space-y-4 mb-4" id="chat-messages">
+        <div class="flex-1 overflow-y-auto no-scrollbar space-y-6 mb-4 px-2" id="chat-messages">
           ${messages.map(msg => `
             <div class="flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in">
               <div class="${msg.role === 'user'
-                ? 'bg-nature-600 text-white rounded-2xl rounded-br-sm max-w-[85%] px-4 py-3'
-                : 'bg-white dark:bg-earth-900 text-earth-800 dark:text-earth-200 border border-earth-100 dark:border-earth-800 rounded-2xl rounded-bl-sm max-w-[85%] px-4 py-3 shadow-sm'}">
-                <div class="text-sm leading-relaxed chat-msg-content">${msg.role === 'ai' ? renderMarkdown(msg.content) : escapeHtml(msg.content)}</div>
+                ? 'bg-nature-600 text-white rounded-3xl rounded-br-sm max-w-[85%] px-5 py-3.5 shadow-xl shadow-nature-600/20 font-medium'
+                : 'glass-card text-earth-800 dark:text-earth-200 rounded-3xl rounded-bl-sm max-w-[85%] px-5 py-3.5 shadow-lg'}">
+                <div class="text-[15px] leading-relaxed chat-msg-content">${msg.role === 'ai' ? renderMarkdown(msg.content) : escapeHtml(msg.content)}</div>
               </div>
             </div>
           `).join('')}
-
+ 
           ${isLoading ? `
             <div class="flex justify-start animate-fade-in">
-              <div class="bg-white dark:bg-earth-900 border border-earth-100 dark:border-earth-800 rounded-2xl rounded-bl-sm px-4 py-3 shadow-sm">
-                <div class="flex gap-1">
-                  <div class="w-2 h-2 bg-earth-300 rounded-full animate-bounce" style="animation-delay: 0s;"></div>
-                  <div class="w-2 h-2 bg-earth-300 rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
-                  <div class="w-2 h-2 bg-earth-300 rounded-full animate-bounce" style="animation-delay: 0.4s;"></div>
+              <div class="glass-card rounded-3xl rounded-bl-sm px-5 py-4 shadow-lg">
+                <div class="flex gap-1.5">
+                  <div class="w-2 h-2 bg-nature-500 rounded-full animate-bounce" style="animation-delay: 0s;"></div>
+                  <div class="w-2 h-2 bg-nature-500 rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
+                  <div class="w-2 h-2 bg-nature-500 rounded-full animate-bounce" style="animation-delay: 0.4s;"></div>
                 </div>
               </div>
             </div>
           ` : ''}
         </div>
-
+ 
         <!-- Suggestions (only if empty chat) -->
         ${messages.length <= 1 && !isLoading ? `
-          <div class="mb-4 space-y-2">
+          <div class="mb-4 space-y-2 px-2 animate-slide-up">
             ${t.suggestions.map(s => `
-              <button class="chat-suggestion w-full text-left bg-earth-50 dark:bg-earth-800 hover:bg-earth-100 dark:hover:bg-earth-700 p-3 rounded-xl text-sm text-earth-700 dark:text-earth-300 transition-colors border border-earth-200 dark:border-earth-700">
-                ${s}
+              <button class="chat-suggestion w-full text-left glass-card hover:bg-nature-500 hover:text-white dark:hover:bg-nature-600 p-4 rounded-2xl text-sm font-bold text-earth-700 dark:text-earth-300 transition-all border-earth-100 dark:border-earth-700 group">
+                <div class="flex items-center justify-between">
+                  <span>${s}</span>
+                  <i data-lucide="chevron-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </div>
               </button>
             `).join('')}
           </div>
         ` : ''}
-
+ 
         <!-- Input -->
-        <div class="flex gap-2">
+        <div class="flex gap-3 glass p-2 rounded-2xl border border-white/20 shadow-2xl">
           <input type="text" id="chat-input" placeholder="${t.placeholder}"
-            class="flex-1 bg-white dark:bg-earth-900 border border-earth-200 dark:border-earth-700 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-nature-500" />
-          <button id="chat-send-btn" class="bg-nature-600 hover:bg-nature-700 text-white p-3 rounded-xl transition-colors ${isLoading ? 'opacity-50' : ''}">
+            class="flex-1 bg-transparent px-4 py-3 text-sm outline-none font-bold text-earth-900 dark:text-white placeholder:text-earth-400" />
+          <button id="chat-send-btn" class="bg-nature-600 hover:bg-nature-700 text-white p-4 rounded-xl shadow-lg shadow-nature-600/30 transition-all active:scale-95 ${isLoading ? 'opacity-50' : ''}">
             <i data-lucide="send" class="w-5 h-5"></i>
           </button>
         </div>
