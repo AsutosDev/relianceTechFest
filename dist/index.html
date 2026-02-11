@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>उर्व संसार | Urva Sansar - Smart Farming Nepal</title>
+  <meta name="description"
+    content="Urva Sansar – Smart Farming Ecosystem for Nepal. AI-powered crop advice, disease detection, market prices, and more." />
+  <link rel="icon" href="assets/logo.png" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            earth: {
+              50: '#faf6f1', 100: '#f0e8db', 200: '#e0d0b8', 300: '#ccb48e',
+              400: '#b8976a', 500: '#a07c52', 600: '#8a6642', 700: '#6e4f35',
+              800: '#583e2e', 900: '#4a3428', 950: '#2a1c15'
+            },
+            nature: {
+              50: '#f0fdf0', 100: '#dbfcdb', 200: '#b9f7ba', 300: '#82ef87',
+              400: '#4cda54', 500: '#2abd33', 600: '#1e9c26', 700: '#1a7a21',
+              800: '#1a611f', 900: '#17501c', 950: '#072c0b'
+            }
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-out',
+            'slide-up': 'slideUp 0.4s ease-out',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'bounce-slow': 'bounce 2s infinite',
+            'float': 'float 3s ease-in-out infinite'
+          },
+          keyframes: {
+            fadeIn: {'0%': {opacity: '0'}, '100%': {opacity: '1'}},
+            slideUp: {'0%': {opacity: '0', transform: 'translateY(20px)'}, '100%': {opacity: '1', transform: 'translateY(0)'}},
+            float: {'0%, 100%': {transform: 'translateY(0px)'}, '50%': {transform: 'translateY(-10px)'}}
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons (vanilla JS) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Marked.js for markdown rendering (used by KrishiChat) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- Google GenAI SDK -->
+  <script type="importmap">
+    {
+      "imports": {
+        "@google/genai": "https://esm.sh/@google/genai"
+      }
+    }
+    </script>
+
+  <style>
+    /* Custom scrollbar hide */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Line clamp utilities */
+    .line-clamp-1 {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+    }
+
+    .line-clamp-2 {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    .line-clamp-3 {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      overscroll-behavior: none;
+    }
+
+    /* Splash screen styles */
+    @keyframes splashPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body
+  class="bg-earth-50 dark:bg-earth-950 text-earth-900 dark:text-earth-100 min-h-screen transition-colors duration-300">
+  <div id="root"></div>
+
+  <!-- Set your Gemini API Key here -->
+  <script>
+    window.API_KEY = '';
+  </script>
+
+  <script type="module" src="js/app.js"></script>
+
+  <script>
+    // Service Worker Registration
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(reg => console.log('SW registered:', reg.scope))
+          .catch(err => console.log('SW registration failed:', err));
+      });
+    }
+  </script>
+</body>
+
+</html>

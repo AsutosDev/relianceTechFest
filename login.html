@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agriculture Simulator | Login & Sign Up</title>
-    <link rel="stylesheet" href="login.css">
+    <title>Urva Sansar | Future of Agriculture</title>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
 </head>
 
 <body>
@@ -26,52 +29,170 @@
     <div class="bg-blobs">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
+        <div class="float-icon" style="top: 15%; left: 10%;"><i data-lucide="cpu" class="w-12 h-12"></i></div>
+        <div class="float-icon" style="top: 65%; left: 85%;"><i data-lucide="database" class="w-16 h-16"></i></div>
+        <div class="float-icon" style="top: 85%; left: 15%;"><i data-lucide="wind" class="w-10 h-10"></i></div>
+        <div class="float-icon" style="top: 10%; left: 75%;"><i data-lucide="shield" class="w-14 h-14"></i></div>
     </div>
 
-    <!-- Theme Toggle -->
-    <div class="theme-switch" id="themeSwitch">
-        <span id="themeIcon">🌙</span>
+    <!-- Theme & Language Toggles -->
+    <div class="controls-top">
+        <button onclick="toggleLang()" id="langSwitcher"
+            class="px-3 py-1 border border-[#2ecc71]/30 rounded text-xs text-[#2ecc71] hover:bg-[#2ecc71]/10 transition-colors font-semibold tracking-wide">NE</button>
+        <button id="themeSwitch"
+            class="w-10 h-10 flex items-center justify-center border border-[#2ecc71]/30 rounded-full text-[#2ecc71] hover:bg-[#2ecc71]/10 transition-colors">
+            <i id="themeIcon" data-lucide="moon" class="w-5 h-5"></i>
+        </button>
     </div>
 
     <div class="container" id="container">
         <!-- Sign Up Form -->
         <div class="form-box signup-form">
             <form id="signupForm">
-                <h1>Create Account</h1>
-                <p>Join the future of smart farming.</p>
+                <h1 data-t="signupTitle">Create Account</h1>
+                <p data-t="signupSubtitle">Join the future of smart farming.</p>
 
                 <div>
                     <div class="row">
                         <div class="input-group">
-                            <label for="fullName">Full Name</label>
-                            <input type="text" id="fullName" placeholder="Ram Prasad Ghimire" required>
+                            <label for="fullName" data-t="labelFullName">Full Name</label>
+                            <input type="text" id="fullName" placeholder="Ram Prasad Ghimire" required
+                                data-t-placeholder="placeholderFullName">
                         </div>
                         <div class="input-group">
-                            <label for="farmName">Farm Name</label>
-                            <input type="text" id="farmName" placeholder="Ghimire Farm" required>
+                            <label for="farmName" data-t="labelFarmName">Farm Name</label>
+                            <input type="text" id="farmName" placeholder="Ghimire Farm" required
+                                data-t-placeholder="placeholderFarmName">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input-group">
-                            <label for="emailSignup">Email</label>
-                            <input type="email" id="emailSignup" placeholder="ghimire@gmail.com" required>
+                            <label for="emailSignup" data-t="labelEmail">Email</label>
+                            <input type="email" id="emailSignup" placeholder="ghimire@gmail.com" required
+                                data-t-placeholder="placeholderEmail">
                         </div>
                         <div class="input-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" placeholder="+977 9800000000">
+                            <label for="phone" data-t="labelPhone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="+977 9800000000"
+                                data-t-placeholder="placeholderPhone">
                         </div>
                     </div>
 
                     <div class="input-group">
-                        <label for="passwordSignup">Password</label>
-                        <input type="password" id="passwordSignup" placeholder="••••••••" required>
+                        <label for="passwordSignup" data-t="labelPassword">Password</label>
+                        <input type="password" id="passwordSignup" placeholder="••••••••" required
+                            data-t-placeholder="placeholderPassword">
+                    </div>
+
+                    <div class="row">
+                        <div class="input-group">
+                            <label for="district" data-t="labelDistrict">District</label>
+                            <select id="district" required>
+                                <option value="" data-t="placeholderDistrict">-- Select District --</option>
+                                <option value="Achham">Achham</option>
+                                <option value="Arghakhanchi">Arghakhanchi</option>
+                                <option value="Baglung">Baglung</option>
+                                <option value="Baitadi">Baitadi</option>
+                                <option value="Bajhang">Bajhang</option>
+                                <option value="Bajura">Bajura</option>
+                                <option value="Banke">Banke</option>
+                                <option value="Bara">Bara</option>
+                                <option value="Bardiya">Bardiya</option>
+                                <option value="Bhaktapur">Bhaktapur</option>
+                                <option value="Bhojpur">Bhojpur</option>
+                                <option value="Chitwan">Chitwan</option>
+                                <option value="Dadeldhura">Dadeldhura</option>
+                                <option value="Dailekh">Dailekh</option>
+                                <option value="Dang">Dang</option>
+                                <option value="Darchula">Darchula</option>
+                                <option value="Dhading">Dhading</option>
+                                <option value="Dhankuta">Dhankuta</option>
+                                <option value="Dhanusa">Dhanusa</option>
+                                <option value="Dolakha">Dolakha</option>
+                                <option value="Dolpa">Dolpa</option>
+                                <option value="Doti">Doti</option>
+                                <option value="Gorkha">Gorkha</option>
+                                <option value="Gulmi">Gulmi</option>
+                                <option value="Humla">Humla</option>
+                                <option value="Ilam">Ilam</option>
+                                <option value="Jajarkot">Jajarkot</option>
+                                <option value="Jhapa">Jhapa</option>
+                                <option value="Jumla">Jumla</option>
+                                <option value="Kailali">Kailali</option>
+                                <option value="Kalikot">Kalikot</option>
+                                <option value="Kanchanpur">Kanchanpur</option>
+                                <option value="Kapilvastu">Kapilvastu</option>
+                                <option value="Kaski">Kaski</option>
+                                <option value="Kathmandu">Kathmandu</option>
+                                <option value="Kavrepalanchok">Kavrepalanchok</option>
+                                <option value="Khotang">Khotang</option>
+                                <option value="Lalitpur">Lalitpur</option>
+                                <option value="Lamjung">Lamjung</option>
+                                <option value="Mahottari">Mahottari</option>
+                                <option value="Makwanpur">Makwanpur</option>
+                                <option value="Manang">Manang</option>
+                                <option value="Morang">Morang</option>
+                                <option value="Mugu">Mugu</option>
+                                <option value="Mustang">Mustang</option>
+                                <option value="Myagdi">Myagdi</option>
+                                <option value="Nawalpur">Nawalpur</option>
+                                <option value="Nuwakot">Nuwakot</option>
+                                <option value="Okhaldhunga">Okhaldhunga</option>
+                                <option value="Palpa">Palpa</option>
+                                <option value="Panchthar">Panchthar</option>
+                                <option value="Parbat">Parbat</option>
+                                <option value="Parsa">Parsa</option>
+                                <option value="Pyuthan">Pyuthan</option>
+                                <option value="Ramechhap">Ramechhap</option>
+                                <option value="Rasuwa">Rasuwa</option>
+                                <option value="Rautahat">Rautahat</option>
+                                <option value="Rolpa">Rolpa</option>
+                                <option value="Rukum East">Rukum East</option>
+                                <option value="Rukum West">Rukum West</option>
+                                <option value="Rupandehi">Rupandehi</option>
+                                <option value="Salyan">Salyan</option>
+                                <option value="Sankhuwasabha">Sankhuwasabha</option>
+                                <option value="Saptari">Saptari</option>
+                                <option value="Sarlahi">Sarlahi</option>
+                                <option value="Sindhuli">Sindhuli</option>
+                                <option value="Sindhupalchok">Sindhupalchok</option>
+                                <option value="Siraha">Siraha</option>
+                                <option value="Solukhumbu">Solukhumbu</option>
+                                <option value="Sunsari">Sunsari</option>
+                                <option value="Surkhet">Surkhet</option>
+                                <option value="Syangja">Syangja</option>
+                                <option value="Tanahun">Tanahun</option>
+                                <option value="Taplejung">Taplejung</option>
+                                <option value="Terhathum">Terhathum</option>
+                                <option value="Udayapur">Udayapur</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="farmingType" data-t="labelFarmingType">Farming Type</label>
+                            <select id="farmingType" required>
+                                <option value="Grain Farming" data-t="farmTypeGrain">Grain Farming</option>
+                                <option value="Vegetable Farming" data-t="farmTypeVeg">Vegetable Farming</option>
+                                <option value="Fruit Farming" data-t="farmTypeFruit">Fruit Farming</option>
+                                <option value="Livestock" data-t="farmTypeLivestock">Livestock</option>
+                                <option value="Mixed Farming" data-t="farmTypeMixed">Mixed Farming</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <button type="button" id="detectLocationBtn" class="detect-location-btn">
+                            <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            <span id="detectLocationText" data-t="btnDetectLocation">Detect Location</span>
+                        </button>
+                        <div id="locationInfo" class="location-info" style="display:none;"></div>
                     </div>
                 </div>
 
-                <button type="submit">Complete Sign Up</button>
+                <button type="submit" data-t="btnSignup">Complete Sign Up</button>
                 <div class="mobile-toggle">
-                    Already have an account? <span id="toLoginMobile">Login</span>
+                    <span data-t="textAlreadyAccount">Already have an account?</span> <span id="toLoginMobile"
+                        data-t="linkLogin">Login</span>
                 </div>
             </form>
         </div>
@@ -79,23 +200,26 @@
         <!-- Login Form -->
         <div class="form-box login-form">
             <form id="loginForm">
-                <h1>Welcome Back</h1>
-                <p>Access your agriculture dashboard.</p>
+                <h1 data-t="loginTitle">Welcome Back</h1>
+                <p data-t="loginSubtitle">Access your agriculture dashboard.</p>
 
                 <div class="input-group">
-                    <label for="emailLogin">Email Address</label>
-                    <input type="email" id="emailLogin" placeholder="farmer@reliance.com" required>
+                    <label for="emailLogin" data-t="labelEmail">Email Address</label>
+                    <input type="email" id="emailLogin" placeholder="farmer@reliance.com" required
+                        data-t-placeholder="placeholderEmail">
                 </div>
 
                 <div class="input-group">
-                    <label for="passwordLogin">Password</label>
-                    <input type="password" id="passwordLogin" placeholder="••••••••" required>
+                    <label for="passwordLogin" data-t="labelPassword">Password</label>
+                    <input type="password" id="passwordLogin" placeholder="••••••••" required
+                        data-t-placeholder="placeholderPassword">
                 </div>
 
-                <button type="submit">Login</button>
+                <button type="submit" data-t="btnLogin">Login</button>
 
                 <div class="mobile-toggle">
-                    Don't have an account? <span id="toSignupMobile">Sign Up</span>
+                    <span data-t="textNoAccount">Don't have an account?</span> <span id="toSignupMobile"
+                        data-t="linkSignup">Sign Up</span>
                 </div>
             </form>
         </div>
@@ -103,19 +227,22 @@
         <!-- Overlay -->
         <div class="overlay-container">
             <div class="overlay-panel overlay-right" id="overlayRight">
-                <h1>Agriculture Sim</h1>
-                <p>Optimize your farm with AI-driven insights and real-time monitoring.</p>
-                <button class="ghost" id="signUp">Sign Up Instead</button>
+                <img src="assets/logo.png" alt="Logo" class="w-16 h-16 mb-4 opacity-90">
+                <h1 data-t="overlayRightTitle">Urva Sansar</h1>
+                <p data-t="overlayRightDesc">Optimize your farm with AI-driven insights and real-time monitoring.</p>
+                <button class="ghost" id="signUp" data-t="btnGhostSignup">Sign Up Instead</button>
             </div>
             <div class="overlay-panel overlay-left" id="overlayLeft">
-                <h1>Ready to harvest?</h1>
-                <p>Log in to manage your livestock and crops with our advanced tools.</p>
-                <button class="ghost" id="signIn">Back to Login</button>
+                <img src="assets/logo.png" alt="Logo"
+                    class="w-16 h-16 mb-4 opacity-90 filter transition-all duration-300 hover:scale-110">
+                <h1 data-t="overlayLeftTitle">Ready to harvest?</h1>
+                <p data-t="overlayLeftDesc">Log in to manage your livestock and crops with our advanced tools.</p>
+                <button class="ghost" id="signIn" data-t="btnGhostLogin">Back to Login</button>
             </div>
         </div>
     </div>
 
-    <script type="module" src="login.js"></script>
+    <script type="module" src="js/login.js"></script>
 </body>
 
 </html>

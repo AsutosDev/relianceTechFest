@@ -59,13 +59,14 @@ const translations = {
     ne: {
         navLogin: "लगइन", heroBadge: "रिलायन्स टेकफेस्टको लागि निर्मित", heroTitle1: "कृषिको", heroTitle2: "भविष्य", heroDesc: "कृषिको नयाँ पुस्ताको अनुभव गर्नुहोस्। बाली व्यवस्थापन, माटो विश्लेषण, सरकारी अनुदान पहुँच, र AI प्रविधिबाट उत्पादन बढाउनुहोस्।", heroCTA: "सुरु गर्नुहोस्", heroLearn: "थप जान्नुहोस्",
         statFarmers: "सशक्त किसानहरू", statDistricts: "जिल्लाहरू समेटिएको", statCrops: "बाली प्रजातिहरू", statSupport: "AI सहायता",
-        aboutTitle: "परियोजनाको", aboutTitleHL: "बारेमा", aboutDesc: "उर्वा संसार नेपालमा कृषिमा क्रान्ति ल्याउन डिजाइन गरिएको हो। AI-संचालित विश्लेषण, सरकारी अनुदान ट्र्याकिङ, बाली रोटेशन सिफारिस, र पशु फोहोर व्यवस्थापन — हाम्रो प्लेटफर्मले किसानहरूलाई दिगो कृषि अभ्यास गर्दै उत्पादकत्व बढाउन आवश्यक उपकरणहरू प्रदान गर्छ।",
+        aboutTitle: "परियोजनाको", aboutTitleHL: "बारेमा", aboutDesc: "उर्व संसार नेपालमा कृषिमा क्रान्ति ल्याउन डिजाइन गरिएको हो। AI-संचालित विश्लेषण, सरकारी अनुदान ट्र्याकिङ, बाली रोटेशन सिफारिस, र पशु फोहोर व्यवस्थापन — हाम्रो प्लेटफर्मले किसानहरूलाई दिगो कृषि अभ्यास गर्दै उत्पादकत्व बढाउन आवश्यक उपकरणहरू प्रदान गर्छ।",
         featTitle: "हाम्रा", featTitleHL: "सुविधाहरू", featSubtitle: "आधुनिक किसानलाई चाहिने सबै कुरा, उन्नत AI प्रविधिद्वारा संचालित", featGovTitle: "सरकारी अनुदान", featGovDesc: "नवीनतम सरकारी कृषि अनुदान, अनुदान, र सहायता कार्यक्रमहरूको बारेमा अपडेट रहनुहोस्।", featPlantAITitle: "AI बिरुवा विश्लेषक", featPlantAIDesc: "आफ्नो बिरुवाहरूको फोटो अपलोड गर्नुहोस् र हाम्रो AI ले तुरुन्तै रोगहरू पहिचान गर्छ।", featAnimalAITitle: "AI पशु विश्लेषक", featAnimalAIDesc: "AI-संचालित विश्लेषणसँग पशुधन स्वास्थ्य निगरानी गर्नुहोस्।", featWasteTitle: "फोहोर व्यवस्थापन", featWasteDesc: "पशु फोहोरलाई मूल्यवान स्रोतमा बदल्नुहोस्।", featCropTitle: "बाली रोटेशन योजनाकार", featCropDesc: "तपाईंको माटोको प्रकारको आधारमा AI-उत्पन्न बाली रोटेशन योजनाहरू प्राप्त गर्नुहोस्।", featComplaintTitle: "मेरा गुनासोहरू", featComplaintDesc: "कृषि समस्याहरूको बारेमा गुनासो पेश गर्नुहोस् र ट्र्याक गर्नुहोस्।",
         howTitle: "यो कसरी", howTitleHL: "काम गर्छ", howSubtitle: "चार सजिलो चरणमा सुरु गर्नुहोस्", step1Title: "खाता बनाउनुहोस्", step1Desc: "सुरु गर्न आफ्नो खेत विवरण र व्यक्तिगत जानकारीसँग साइन अप गर्नुहोस्", step2Title: "लक्ष्य सेट गर्नुहोस्", step2Desc: "हामीलाई तपाईंको बाली, पशुधन, र तपाईं के हासिल गर्न चाहनुहुन्छ भन्नुहोस्", step3Title: "AI अन्तर्दृष्टि पाउनुहोस्", step3Desc: "उन्नत AI विश्लेषणद्वारा संचालित व्यक्तिगत सिफारिसहरू प्राप्त गर्नुहोस्", step4Title: "बढ्नुहोस् र समृद्ध हुनुहोस्", step4Desc: "अन्तर्दृष्टिहरू लागू गर्नुहोस् र तपाईंको खेतको उत्पादकत्व बढ्दै जानुहोस्",
         extraTitle: "यो पनि", extraTitleHL: "समावेश छ", extraWeatherTitle: "मौसम पूर्वानुमान", extraWeatherDesc: "तपाईंको खेतको GPS निर्देशांकमा आधारित मौसम भविष्यवाणी प्राप्त गर्नुहोस्।", extraInsuranceTitle: "बाली बीमा गाइड", extraInsuranceDesc: "बाली बीमा विकल्पहरू सजिलैसँग नेभिगेट गर्नुहोस्।", extraCommunityTitle: "किसान समुदाय", extraCommunityDesc: "साथी किसानहरूसँग जोडिनुहोस् र साझा गर्नुहोस्।", extraMarketTitle: "बजार मूल्य", extraMarketDesc: "तपाईंको क्षेत्रमा बाली र पशुधनको रियल-टाइम बजार मूल्यहरू।",
-        testTitle: "किसानहरू के", testTitleHL: "भन्छन्", test1Name: "राम बहादुर थापा", test1Quote: "उर्वा संसारले मेरो धानको उत्पादन ४०% बढाउन मद्दत गर्‍यो।", test1Loc: "चितवन, नेपाल", test2Name: "सीता देवी शर्मा", test2Quote: "सरकारी अनुदान ट्र्याकरले मात्रै मलाई हजारौं रुपैयाँ बचाएको छ।", test2Loc: "मोरङ, नेपाल", test3Name: "कृष्ण प्रसाद ओली", test3Quote: "बाली रोटेशन योजनाकारले मेरो खेतलाई परिवर्तन गर्‍यो।", test3Loc: "कास्की, नेपाल",
+        testTitle: "किसानहरू के", testTitleHL: "भन्छन्", test1Name: "राम बहादुर थापा", test1Quote: "उर्व संसारले मेरो धानको उत्पादन ४०% बढाउन मद्दत गर्‍यो।", test1Loc: "चितवन, नेपाल", test2Name: "सीता देवी शर्मा", test2Quote: "सरकारी अनुदान ट्र्याकरले मात्रै मलाई हजारौं रुपैयाँ बचाएको छ।", test2Loc: "मोरङ, नेपाल", test3Name: "कृष्ण प्रसाद ओली", test3Quote: "बाली रोटेशन योजनाकारले मेरो खेतलाई परिवर्तन गर्‍यो।", test3Loc: "कास्की, नेपाल",
         creatorsTitle: "सिर्जनाकर्ताहरू", creatorsTitleHL: "भेट्नुहोस्",
-        ctaTitle: "तपाईंको खेत रूपान्तरण गर्न तयार हुनुहुन्छ?", ctaDesc: "हजारौं किसानहरूसँग सामेल हुनुहोस् जसले पहिले नै उर्वा संसार प्रयोग गरिरहेका छन्।", ctaBtn: "अहिले सुरु गर्नुहोस्",
+
+        ctaTitle: "तपाईंको खेत रूपान्तरण गर्न तयार हुनुहुन्छ?", ctaDesc: "हजारौं किसानहरूसँग सामेल हुनुहोस् जसले पहिले नै उर्व संसार प्रयोग गरिरहेका छन्।", ctaBtn: "अहिले सुरु गर्नुहोस्",
         footerText: "रिलायन्स टेकफेस्ट परियोजना।",
     }
 };
@@ -172,4 +173,48 @@ function toggleLang() {
     updateTranslations();
 }
 
-window.onload = renderGrids;
+function toggleTheme() {
+    const body = document.body;
+    body.classList.toggle('light');
+    const isLight = body.classList.contains('light');
+    localStorage.setItem('agri-theme', isLight ? 'light' : 'dark');
+    updateThemeIcon();
+}
+
+function updateThemeIcon() {
+    const isLight = document.body.classList.contains('light');
+    const themeIconContainer = document.getElementById('themeIcon');
+    if (themeIconContainer) {
+        themeIconContainer.innerHTML = `<i data-lucide="${isLight ? 'sun' : 'moon'}" class="w-5 h-5"></i>`;
+        lucide.createIcons();
+    }
+}
+
+function initTheme() {
+    const savedTheme = localStorage.getItem('agri-theme');
+    if (savedTheme === 'light') {
+        document.body.classList.add('light');
+        updateThemeIcon();
+    }
+}
+
+function navigateWithOverlay(url) {
+    const overlay = document.getElementById('loadingOverlay');
+    overlay.classList.add('active');
+    setTimeout(() => {
+        window.location.href = url;
+    }, 1500);
+}
+
+window.onload = () => {
+    initTheme();
+    renderGrids();
+
+    // Attach loading overlay to all navigation links (login, get started, start now)
+    document.querySelectorAll('a[href="login.html"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            navigateWithOverlay(link.href);
+        });
+    });
+};

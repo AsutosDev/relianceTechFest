@@ -4,60 +4,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urva Sansar | Smart Farming</title>
+    <title>Urva Sansar | Future of Agriculture</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        earth: {
-                            50: '#faf9f6',
-                            100: '#f5f0e6',
-                            200: '#e6dcc6',
-                            300: '#d4c0a1',
-                            400: '#bf9d73',
-                            500: '#a87f51',
-                            600: '#8c6441',
-                            700: '#3f3f46',
-                            800: '#27272a',
-                            900: '#18181b',
-                            950: '#09090b',
-                        },
-                        nature: {
-                            50: '#effef4',
-                            100: '#dbfde5',
-                            200: '#bbfccf',
-                            300: '#8af6b0',
-                            400: '#4ade80',
-                            500: '#22c55e',
-                            600: '#16a34a',
-                            700: '#15803d',
-                            800: '#166534',
-                            900: '#14532d',
-                            950: '#052e16',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <script>
-        // Redirect to login if no user data found (simple simulated auth check)
-        if (!localStorage.getItem('urva_user')) {
-            window.location.href = 'login.html';
-        } else {
-            window.location.href = 'homepage.html';
-        }
-    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/landingpage.css">
 </head>
 
-<body class="bg-earth-50 dark:bg-earth-950">
-    <!-- Redirecting... -->
+<body class="min-h-screen overflow-x-hidden">
+
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <nav class="flex justify-between items-center px-[5%] py-8 nav-blur sticky top-0 z-[100] border-b border-white/5">
+        <a href="index.html" class="flex items-center gap-2">
+            <img src="assets/logo.png" alt="Urva Sansar Logo" class="h-10 w-auto">
+            <span class="text-xl font-bold text-primary uppercase tracking-[2px] hidden md:inline">Urva Sansar</span>
+        </a>
+        <div class="flex items-center gap-4">
+            <button onclick="toggleLang()" id="langSwitcher"
+                class="px-3 py-1 border border-primary/30 rounded text-xs text-primary hover:bg-primary/10 transition-colors">NE</button>
+            <button onclick="toggleTheme()" id="themeIcon"
+                class="w-10 h-10 flex items-center justify-center border border-primary/30 rounded-full text-primary hover:bg-primary/10 transition-colors">
+                <i data-lucide="moon" class="w-5 h-5"></i>
+            </button>
+            <a href="login.html"
+                class="px-6 py-2.5 bg-transparent border border-primary text-primary rounded-full font-semibold transition-all duration-300 hover:bg-primary hover:text-white"
+                data-t="navLogin">Login</a>
+        </div>
+    </nav>
+
+    <header class="min-h-[80vh] flex flex-col justify-center items-center text-center px-5 relative">
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03]">
+            <i data-lucide="leaf" style="width: 600px; height: 600px;" class="text-primary"></i>
+        </div>
+        <div class="relative z-10">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium mb-8">
+                <i data-lucide="award" class="w-4 h-4"></i>
+                <span data-t="heroBadge">Built for Reliance TechFest</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-5 leading-[1.1] hero-title">
+                <span data-t="heroTitle1">Future of</span> <br /> <span data-t="heroTitle2">Agriculture</span>
+            </h1>
+            <p class="text-lg text-gray-400 max-w-[600px] mx-auto mb-10" data-t="heroDesc"></p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="login.html"
+                    class="hero-cta-btn px-10 py-4 rounded-full font-bold text-lg text-white uppercase tracking-[1px] flex items-center gap-2">
+                    <span data-t="heroCTA">Get Started</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <a href="#features"
+                    class="text-gray-400 hover:text-primary transition-colors flex items-center gap-1 font-medium">
+                    <span data-t="heroLearn">Learn More</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-12 px-[5%]">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto" id="stats-grid"></div>
+    </section>
+
+    <section class="py-20 px-[10%]">
+        <h2 class="text-center text-4xl font-bold mb-12">
+            <span data-t="aboutTitle">About the</span> <span class="text-primary" data-t="aboutTitleHL">Project</span>
+        </h2>
+        <div class="card-glass p-10 rounded-[20px] text-center leading-[1.8] text-lg text-gray-400 max-w-4xl mx-auto">
+            <p data-t="aboutDesc"></p>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 px-[5%]">
+        <h2 class="text-center text-4xl font-bold mb-4">
+            <span data-t="featTitle">Our</span> <span class="text-primary" data-t="featTitleHL">Features</span>
+        </h2>
+        <p class="text-center text-gray-400 mb-12 max-w-xl mx-auto" data-t="featSubtitle"></p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto" id="features-grid"></div>
+    </section>
+
+    <section class="py-20 px-[5%]">
+        <h2 class="text-center text-4xl font-bold mb-4">
+            <span data-t="howTitle">How It</span> <span class="text-primary" data-t="howTitleHL">Works</span>
+        </h2>
+        <p class="text-center text-gray-400 mb-16 max-w-xl mx-auto" data-t="howSubtitle"></p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto" id="steps-grid"></div>
+    </section>
+
+    <section class="py-20 px-[5%]">
+        <h2 class="text-center text-4xl font-bold mb-12">
+            <span data-t="extraTitle">Also</span> <span class="text-primary" data-t="extraTitleHL">Included</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto" id="extras-grid"></div>
+    </section>
+
+    <section class="py-20 px-[5%]">
+        <h2 class="text-center text-4xl font-bold mb-12">
+            <span data-t="testTitle">What Farmers</span> <span class="text-primary" data-t="testTitleHL">Say</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto" id="testimonials-grid"></div>
+    </section>
+
+    <section class="py-20 px-[10%]">
+        <h2 class="text-center text-4xl font-bold mb-12">
+            <span data-t="creatorsTitle">Meet the</span> <span class="text-primary"
+                data-t="creatorsTitleHL">Creators</span>
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="creators-grid"></div>
+    </section>
+
+    <section class="py-20 px-[5%]">
+        <div class="cta-container max-w-4xl mx-auto text-center p-12 rounded-[30px] relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div
+                    class="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2">
+                </div>
+            </div>
+            <div class="relative z-10">
+                <h2 class="text-4xl font-bold text-white mb-4" data-t="ctaTitle"></h2>
+                <p class="text-white/70 mb-8 max-w-md mx-auto" data-t="ctaDesc"></p>
+                <a href="login.html"
+                    class="inline-flex items-center gap-2 px-10 py-4 bg-white rounded-full font-bold text-lg uppercase tracking-[1px] transition-all duration-300 hover:-translate-y-1"
+                    style="color: #0f1710">
+                    <span data-t="ctaBtn">Start Now</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="tech-spinner">
+                <svg viewBox="0 0 100 100">
+                    <circle class="base-circle" cx="50" cy="50" r="45"></circle>
+                    <circle class="inner-circle" cx="50" cy="50" r="35"></circle>
+                    <path class="orbiting-dot" d="M 50,5 a 45,45 0 0,1 0,90 a 45,45 0 0,1 0,-90"></path>
+                </svg>
+            </div>
+            <div class="loading-text" id="loadingText">Redirecting...</div>
+            <div class="loading-subtext">This usually takes a few seconds</div>
+        </div>
+    </div>
+
+    <footer class="text-center py-12 text-gray-500 text-sm border-t border-white/5 mt-20">
+        <p>©️ 2024 Urva Sansar. <span data-t="footerText"></span></p>
+    </footer>
+
+    <script src="js/landingpage.js"></script>
 </body>
 
 </html>
